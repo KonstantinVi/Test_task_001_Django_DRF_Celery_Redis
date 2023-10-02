@@ -1,6 +1,8 @@
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser
+from rest_framework.parsers import FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import generics
 from .models import File
 from .serializers import UploadedFileSerializer
 from .tasks import process_file
@@ -18,3 +20,8 @@ class FileUploadView(APIView):
             return Response(file_serializer.data, status=201)
         else:
             return Response(file_serializer.errors, status=400)
+
+
+class FileListView(generics.ListAPIView):
+    queryset = File.objects.all()
+    serializer_class = UploadedFileSerializer

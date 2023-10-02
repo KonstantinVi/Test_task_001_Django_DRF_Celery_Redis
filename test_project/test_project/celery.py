@@ -10,3 +10,4 @@ app = Celery('test_project')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+# app.autodiscover_tasks(['api_file_upload.apps.ApiFileUploadConfig', 'rest_framework'])
