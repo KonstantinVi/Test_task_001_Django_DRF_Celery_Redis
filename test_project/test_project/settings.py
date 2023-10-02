@@ -87,6 +87,9 @@ DATABASES = {
     }
 }
 
+# Использование Redis как брокер сообщений.
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
